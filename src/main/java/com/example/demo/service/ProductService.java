@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -55,6 +56,12 @@ public class ProductService {
     public Optional<Product> getProductById(Long id) {
         return products.stream()
                 .filter(product -> product.getId().equals(id))
+                .findFirst();
+    }
+
+    public Optional<Product> getProductByName(String name) {
+        return products.stream()
+                .filter(product -> product.getName().equals(name))
                 .findFirst();
     }
 } 
