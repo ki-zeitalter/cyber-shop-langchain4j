@@ -22,9 +22,9 @@ public class MessageController {
 
     @PostMapping("/chat-stream")
     public Flux<DeepChatMessageContent> chatStreamFlux(@RequestBody DeepChatRequestBody requestBody) {
-        var textContent = TextContent.from(requestBody.getMessages()[0].getText());
+        var currentPrompt = requestBody.getMessages()[0].getText();
 
-        return this.assistant.chatStream(UserMessage.userMessage(textContent))
+        return this.assistant.chatStream(currentPrompt, requestBody.getCartId())
                 .map(message ->
                         DeepChatMessageContent.builder()
                                 .text(message)
