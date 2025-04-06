@@ -27,7 +27,15 @@ public class ShopTools {
         }).orElse("Produkt nicht gefunden.");
     }
 
-    public String addProductToCart(String productName) {
-        return "Aktuell steht diese Funktion nicht zur Verfügung.";
+    @Tool("Diese Funktion fügt ein Produkt mit dem angegebenen Produktnamen zum Warenkorb mit der angegebenen Warenkorb-ID hinzu.")
+    public String addProductToCart(String productName, Long cartId) {
+        var optionalProduct = productService.getProductByName(productName);
+        if (optionalProduct.isEmpty()) {
+            return "Produkt nicht gefunden.";
+        }
+
+        shoppingService.addToCart(cartId, optionalProduct.get().getId(), 1);
+
+        return "Produkt '" + productName + "' wurde zum Warenkorb hinzugefügt.";
     }
 }
