@@ -35,7 +35,7 @@ public class ProductRagService {
                                         .put("Beschreibung", product.getDescription())
                                         .put("Preis", product.getPrice() != null ? product.getPrice().toString() : "N/A")
                                         .put("Produkt-ID", product.getId())
-                                        .put("Bild-URL", product.getImageUrl())
+                                        .put("Bildadresse", product.getImageUrl())
                         )
                 )
                 .toList();

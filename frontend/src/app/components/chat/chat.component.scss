@@ -15,7 +15,7 @@
   padding: 0.75rem 1rem;
   background-color: #f8f9fa;
   border-bottom: 1px solid #dee2e6;
-  
+
   h5 {
     margin: 0;
     font-size: 1rem;
@@ -36,11 +36,11 @@
   padding: 0.75rem;
   border-radius: 0.5rem;
   position: relative;
-  
+
   .message-content {
     word-break: break-word;
   }
-  
+
   .message-time {
     font-size: 0.7rem;
     margin-top: 0.25rem;
@@ -54,7 +54,7 @@
   background-color: #007bff;
   color: white;
   border-bottom-right-radius: 0;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -74,7 +74,7 @@
   background-color: #e9ecef;
   color: #212529;
   border-bottom-left-radius: 0;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -95,11 +95,11 @@
   border-top: 1px solid #dee2e6;
   background-color: #f8f9fa;
   gap: 0.5rem;
-  
+
   input {
     flex: 1;
   }
-  
+
   .send-button {
     width: 40px;
     height: 38px;
@@ -116,10 +116,10 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 700px;
-    height: 600px;
+    width: 800px;
+    height: 700px;
     z-index: 1050;
-    
+
     .chat-container {
       height: 100%;
     }
