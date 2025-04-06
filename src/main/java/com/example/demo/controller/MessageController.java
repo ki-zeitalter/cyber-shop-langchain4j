@@ -3,6 +3,9 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.demo.model.deepchat.DeepChatMessageContent;
+import com.example.demo.model.deepchat.DeepChatMessageRole;
+import com.example.demo.model.deepchat.DeepChatRequestBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,51 +18,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Message;
+import reactor.core.publisher.Flux;
 
 @RestController
-@RequestMapping("/api/messages")
+@RequestMapping("/api")
 public class MessageController {
 
-    // Einfache In-Memory-Speicherung (würde in einer echten Anwendung durch ein Repository ersetzt werden)
-    private List<Message> messages = new ArrayList<>();
+    @PostMapping("/chat-stream")
+    public Flux<DeepChatMessageContent> chatStreamFlux(@RequestBody DeepChatRequestBody requestBody) {
+        String placeholder = "Hallo lieber Kunde... Sie sprechen mit uns außerhalb der Öffnungszeiten. Wir haben von zwölf bis Mittag für Sie auf!";
+        return Flux.create(sink -> {
+            sink.next(DeepChatMessageContent.builder()
+                    .text(placeholder)
+                    .role(DeepChatMessageRole.ai)
+                    .build());
 
-    @GetMapping
-    public List<Message> getAllMessages() {
-        return messages;
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Message> getMessage(@PathVariable int id) {
-        if (id >= 0 && id < messages.size()) {
-            return new ResponseEntity<>(messages.get(id), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @PostMapping
-    public ResponseEntity<Message> createMessage(@RequestBody Message message) {
-        messages.add(message);
-        return new ResponseEntity<>(message, HttpStatus.CREATED);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Message> updateMessage(@PathVariable int id, @RequestBody Message message) {
-        if (id >= 0 && id < messages.size()) {
-            messages.set(id, message);
-            return new ResponseEntity<>(message, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMessage(@PathVariable int id) {
-        if (id >= 0 && id < messages.size()) {
-            messages.remove(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+            sink.complete();
+        });
     }
 } 
