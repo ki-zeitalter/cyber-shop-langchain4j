@@ -1,0 +1,49 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="main-container">
+  <app-header></app-header>
+  
+  <div class="content-container">
+    <main class="main-content">
+      <div class="container">
+        <h2 class="my-4">Unsere Produkte</h2>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          <div class="col" *ngFor="let product of products">
+            <app-product-card 
+              [product]="product"
+              (addToCart)="onAddToCart($event)"
+              (showDetails)="onShowProductDetails($event)">
+            </app-product-card>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <aside class="sidebar">
+      <app-cart-sidebar></app-cart-sidebar>
+    </aside>
+  </div>
+  
+  <app-product-detail
+    [product]="selectedProduct"
+    [visible]="showProductDetail"
+    (close)="onCloseProductDetails()"
+    (addToCart)="onAddToCartWithQuantity($event)">
+  </app-product-detail>
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

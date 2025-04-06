@@ -1,0 +1,52 @@
+<div class="cart-sidebar">
+  <div class="cart-section">
+    <div class="cart-header">
+      <h5><i class="bi bi-cart"></i> Warenkorb</h5>
+      <button *ngIf="cart?.items?.length" class="btn btn-sm btn-outline-danger" (click)="clearCart()">
+        <i class="bi bi-trash"></i> Leeren
+      </button>
+    </div>
+    
+    <div class="cart-items" *ngIf="cart?.items?.length; else emptyCart">
+      <div class="cart-item" *ngFor="let item of cart?.items">
+        <div class="item-image">
+          <img [src]="item.product.imageUrl" [alt]="item.product.name">
+        </div>
+        <div class="item-details">
+          <h6>{{ item.product.name }}</h6>
+          <p class="item-price">{{ item.product.price }}€</p>
+          <div class="item-quantity">
+            <button class="btn btn-sm btn-outline-secondary" (click)="updateQuantity(item.product.id, item.quantity - 1)" [disabled]="item.quantity <= 1">-</button>
+            <span>{{ item.quantity }}</span>
+            <button class="btn btn-sm btn-outline-secondary" (click)="updateQuantity(item.product.id, item.quantity + 1)">+</button>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-outline-danger remove-button" (click)="removeItem(item.product.id)">
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+    </div>
+    
+    <ng-template #emptyCart>
+      <div class="empty-cart">
+        <i class="bi bi-cart" style="font-size: 2rem;"></i>
+        <p>Ihr Warenkorb ist leer</p>
+      </div>
+    </ng-template>
+    
+    <div class="cart-footer" *ngIf="cart?.items?.length">
+      <div class="d-flex justify-content-between">
+        <span>Gesamtsumme:</span>
+        <span class="cart-total">{{ cart?.total }}€</span>
+      </div>
+      <button class="btn btn-success w-100 mt-3">Zur Kasse</button>
+    </div>
+  </div>
+  
+  <div class="chat-section">
+    <h5><i class="bi bi-chat-text"></i> Chat</h5>
+    <div class="chat-placeholder">
+      <p>Hier wird später die Chat-Funktion implementiert.</p>
+    </div>
+  </div>
+</div>

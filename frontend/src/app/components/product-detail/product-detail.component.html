@@ -1,0 +1,44 @@
+<div class="modal" tabindex="-1" [ngClass]="{'d-block': visible, 'modal-open': visible}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" *ngIf="product">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ product.name }}</h5>
+        <button type="button" class="btn-close" (click)="onClose($event)"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img [src]="product.imageUrl" [alt]="product.name" class="img-fluid product-image">
+          </div>
+          <div class="col-md-6">
+            <h4>{{ product.name }}</h4>
+            <p class="price">{{ product.price }}€</p>
+            <p class="description">{{ product.description }}</p>
+            
+            <div class="d-flex align-items-center mt-4 mb-4">
+              <div class="quantity-control">
+                <button class="btn btn-outline-secondary" (click)="decreaseQuantity()">-</button>
+                <span class="quantity">{{ quantity }}</span>
+                <button class="btn btn-outline-secondary" (click)="increaseQuantity()">+</button>
+              </div>
+            </div>
+            
+            <button class="btn btn-primary btn-lg w-100" (click)="onAddToCart()">
+              <i class="bi bi-cart-plus"></i> In den Warenkorb
+            </button>
+          </div>
+        </div>
+        
+        <div class="row mt-4" *ngIf="product.longDescription">
+          <div class="col-12">
+            <h5>Detaillierte Beschreibung</h5>
+            <p class="long-description">{{ product.longDescription }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Backdrop für das Modal -->
+<div class="modal-backdrop fade show" *ngIf="visible" (click)="onClose($event)"></div>
