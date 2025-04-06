@@ -1,0 +1,30 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <h5><i class="bi bi-chat-text"></i> Chat</h5>
+    <button *ngIf="isPopoverOpen" class="btn btn-sm btn-close" (click)="onClosePopover()"></button>
+  </div>
+  
+  <div class="chat-messages">
+    <div *ngFor="let message of messages" class="message" [ngClass]="{'user-message': message.isUser, 'system-message': !message.isUser}">
+      <div class="message-content">
+        {{ message.text }}
+      </div>
+      <div class="message-time">
+        {{ message.timestamp | date:'shortTime' }}
+      </div>
+    </div>
+  </div>
+  
+  <div class="chat-input">
+    <input 
+      type="text" 
+      class="form-control" 
+      placeholder="Nachricht eingeben..." 
+      [(ngModel)]="messageInput"
+      (keyup.enter)="sendMessage()"
+    >
+    <button class="btn btn-primary send-button" (click)="sendMessage()">
+      <i class="bi bi-send"></i>
+    </button>
+  </div>
+</div>

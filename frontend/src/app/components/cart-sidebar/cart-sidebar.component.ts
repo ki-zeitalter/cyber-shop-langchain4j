@@ -4,17 +4,19 @@ import { Cart } from '../../models/cart.model';
 import { CartItem } from '../../models/cart-item.model';
 import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
+import { ChatComponent } from '../chat/chat.component';
 
 @Component({
   selector: 'app-cart-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ChatComponent],
   templateUrl: './cart-sidebar.component.html',
   styleUrls: ['./cart-sidebar.component.scss']
 })
 export class CartSidebarComponent implements OnInit, OnDestroy {
   cart: Cart | null = null;
   private cartSubscription: Subscription | null = null;
+  isChatPopoverOpen = false;
 
   constructor(private cartService: CartService) {}
 
@@ -42,5 +44,13 @@ export class CartSidebarComponent implements OnInit, OnDestroy {
 
   clearCart(): void {
     this.cartService.clearCart().subscribe();
+  }
+
+  toggleChatPopover(): void {
+    this.isChatPopoverOpen = !this.isChatPopoverOpen;
+  }
+
+  closeChatPopover(): void {
+    this.isChatPopoverOpen = false;
   }
 }
