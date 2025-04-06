@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>cybershop-langchain4j-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo Spring Boot REST project</description>
+	<name>CyberShop LangChain4j Demo</name>
+	<description>Demoprojekt, das die Integration von LangChain4j in Spring Boot Anwendungen zeigt</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
