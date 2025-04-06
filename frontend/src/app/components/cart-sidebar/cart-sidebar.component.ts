@@ -17,12 +17,15 @@ export class CartSidebarComponent implements OnInit, OnDestroy {
   cart: Cart | null = null;
   private cartSubscription: Subscription | null = null;
   isChatPopoverOpen = false;
+  isUpdating = false;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartSubscription = this.cartService.cart$.subscribe(cart => {
+      this.isUpdating = true;
       this.cart = cart;
+      setTimeout(() => this.isUpdating = false, 500);
     });
   }
 
@@ -52,5 +55,9 @@ export class CartSidebarComponent implements OnInit, OnDestroy {
 
   closeChatPopover(): void {
     this.isChatPopoverOpen = false;
+  }
+  
+  refreshCart(): void {
+    this.cartService.refreshCart();
   }
 }
