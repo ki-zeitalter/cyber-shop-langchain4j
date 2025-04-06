@@ -25,6 +25,9 @@ public class ShopTools {
                 throw new RuntimeException(e);
             }
         }).orElse("Produkt nicht gefunden.");
+    }
 
+    public String addProductToCart(String productName) {
+        return "Aktuell steht diese Funktion nicht zur Verfügung.";
     }
 }

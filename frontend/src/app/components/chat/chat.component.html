@@ -4,13 +4,11 @@
     <button *ngIf="isPopoverOpen" class="btn btn-sm btn-close" (click)="onClosePopover()"></button>
   </div>
 
-  <deep-chat
+  <deep-chat #deepChat
     connect='{
         "url": "http://localhost:8080/api/chat-stream",
         "method": "POST",
-        "stream": true,
-        "headers": {"customName": "customHeaderValue"},
-        "additionalBodyProps": {"customBodyField": "customBodyValue"}
+        "stream": true
       }'
     style="border-radius: 10px; width: 100%; height: 98%; padding-top: 10px"
     messageStyles='{
