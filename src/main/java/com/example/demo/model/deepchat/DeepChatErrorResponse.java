@@ -1,13 +1,10 @@
 package com.example.demo.model.deepchat;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@RequiredArgsConstructor
 public class DeepChatErrorResponse {
-  private String error;
-
-  public DeepChatErrorResponse(String error) {
-    this.error = error;
-  }
-
-  public String getError() {
-    return this.error;
-  }
+  private final String error;
 }

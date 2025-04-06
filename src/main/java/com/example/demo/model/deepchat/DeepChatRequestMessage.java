@@ -1,14 +1,13 @@
 package com.example.demo.model.deepchat;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public class DeepChatRequestMessage {
-  private String role;
-  private String text;
+    private final String role;
+    private final String text;
 
-  public String getRole() {
-    return this.role;
-  }
 
-  public String getText() {
-    return this.text;
-  }
 }

@@ -1,17 +1,13 @@
 package com.example.demo.model.deepchat;
 
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 import java.util.List;
 
+@Getter
+@RequiredArgsConstructor
 public class DeepChatFileResponse {
-  private List<DeepChatFile> files;
-
-  public DeepChatFileResponse(List<DeepChatFile> files) {
-    if (files != null) {
-      this.files = files;
-    }
-  }
-
-  public List<DeepChatFile> getFiles() {
-    return files;
-  }
+    private final @NotNull List<DeepChatFile> files;
 }
