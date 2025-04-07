@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
 
@@ -16,6 +16,13 @@ export class ProductDetailComponent {
   @Output() addToCart = new EventEmitter<{product: Product, quantity: number}>();
   
   quantity = 1;
+
+  @HostListener('document:keydown.escape', ['$event'])
+  onKeydownHandler(event: KeyboardEvent) {
+    if (this.visible) {
+      this.onClose();
+    }
+  }
 
   onClose(event?: Event): void {
     if (event) {
