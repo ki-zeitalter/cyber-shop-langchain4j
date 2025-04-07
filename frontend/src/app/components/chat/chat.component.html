@@ -1,7 +1,12 @@
 <div class="chat-container">
   <div class="chat-header">
     <h5><i class="bi bi-chat-text"></i> Chat</h5>
-    <button *ngIf="isPopoverOpen" class="btn btn-sm btn-close" (click)="onClosePopover()"></button>
+    <div class="chat-actions">
+      <button *ngIf="!isPopoverOpen" class="btn btn-sm btn-outline-primary me-2" (click)="onExpand()">
+        <i class="bi bi-arrows-angle-expand"></i> Maximieren
+      </button>
+      <button *ngIf="isPopoverOpen" class="btn btn-sm btn-close" (click)="onClosePopover()"></button>
+    </div>
   </div>
 
   <deep-chat #deepChat
@@ -74,7 +79,7 @@
         }
       }'
     inputAreaStyle='{"fontSize": "1rem"}'
-    textInput='{"placeholder": {"text": "Sprechen Sie mit mir, der AGI deines Vertrauens"}}'
+    textInput='{"placeholder": {"text": "Sprich mit mir, der AGI 🤖 deines Vertrauens 🤟"}}'
   ></deep-chat>
 
 </div>

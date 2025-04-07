@@ -20,6 +20,7 @@ interface RequestDetails {
 export class ChatComponent implements OnInit, AfterViewInit {
   @Input() isPopoverOpen = false;
   @Output() closePopover = new EventEmitter<void>();
+  @Output() expand = new EventEmitter<void>();
   @ViewChild('deepChat', { static: true }) deepChatElement!: ElementRef;
 
   cartId: number | null = null;
@@ -29,6 +30,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   onClosePopover(): void {
     this.closePopover.emit();
+  }
+
+  onExpand(): void {
+    this.expand.emit();
   }
 
   ngOnInit(): void {

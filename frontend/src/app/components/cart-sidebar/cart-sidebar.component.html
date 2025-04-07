@@ -49,14 +49,7 @@
   </div>
 
   <div class="chat-section">
-    <div class="chat-header">
-      <h5><i class="bi bi-chat-text"></i> Chat</h5>
-      <button class="btn btn-sm btn-outline-primary" (click)="toggleChatPopover()">
-        <i class="bi bi-arrows-angle-expand"></i> Maximieren
-      </button>
-    </div>
-
-    <app-chat></app-chat>
+    <app-chat (expand)="toggleChatPopover()"></app-chat>
   </div>
 </div>
 
