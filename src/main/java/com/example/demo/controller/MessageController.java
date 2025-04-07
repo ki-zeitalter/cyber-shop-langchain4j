@@ -11,22 +11,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
+import java.util.stream.Stream;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class MessageController {
 
-    private final ShopAssistant assistant;
 
     @PostMapping("/chat-stream")
     public Flux<DeepChatMessageContent> chatStreamFlux(@RequestBody DeepChatRequestBody requestBody) {
         var currentPrompt = requestBody.getMessages()[0].getText();
 
-        return this.assistant.chatStream(currentPrompt, requestBody.getCartId())
-                .map(message ->
-                        DeepChatMessageContent.builder()
-                                .text(message)
-                                .role(DeepChatMessageRole.ai)
-                                .build());
+        String response = "Leider erreichst du uns außerhalb unserer Öffnungszeiten. Wir sind von 12 bis Mittag für dich da. " +
+                "Wir freuen uns auf deinen Besuch!";
+
+        return Flux.create(sink -> {
+            sink.next(DeepChatMessageContent.builder().role(DeepChatMessageRole.ai).text(response).build());
+            sink.complete();
+        });
     }
 } 
