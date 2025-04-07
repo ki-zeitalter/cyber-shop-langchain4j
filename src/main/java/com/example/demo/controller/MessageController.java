@@ -4,8 +4,6 @@ import com.example.demo.assistant.ShopAssistant;
 import com.example.demo.model.deepchat.DeepChatMessageContent;
 import com.example.demo.model.deepchat.DeepChatMessageRole;
 import com.example.demo.model.deepchat.DeepChatRequestBody;
-import dev.langchain4j.data.message.TextContent;
-import dev.langchain4j.data.message.UserMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
