@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.assistant.ShopAssistant;
 import com.example.demo.model.deepchat.DeepChatMessageContent;
 import com.example.demo.model.deepchat.DeepChatMessageRole;
 import com.example.demo.model.deepchat.DeepChatRequestBody;
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
-
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/api")
