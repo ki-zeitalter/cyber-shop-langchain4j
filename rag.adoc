@@ -1,3 +1,8 @@
-https://docs.langchain4j.dev/tutorials/rag
+Quelle: https://docs.langchain4j.dev/tutorials/rag
 
+Vorbereitung der Daten (Embeddings erzeugen)
 image:https://docs.langchain4j.dev/assets/images/rag-ingestion-9b548e907df1c3c8948643795a981b95.png[]
+
+
+Retrieval
+image:https://docs.langchain4j.dev/assets/images/rag-retrieval-f525d2937abc08fed5cec36a7f08a4c3.png[]]
