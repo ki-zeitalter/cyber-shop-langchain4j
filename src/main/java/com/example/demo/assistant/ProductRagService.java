@@ -5,6 +5,7 @@ import com.example.demo.service.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.Metadata;
+import dev.langchain4j.data.document.splitter.DocumentSplitters;
 import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
@@ -49,7 +50,12 @@ public class ProductRagService {
     }
 
     private void embed(List<Document> documents) {
-        EmbeddingStoreIngestor.ingest(documents, embeddingStore);
+        EmbeddingStoreIngestor
+                .builder()
+                .embeddingStore(embeddingStore)
+                .documentSplitter(DocumentSplitters.recursive(5000, 100))
+                .build()
+                .ingest(documents);
     }
 
     @PostConstruct
