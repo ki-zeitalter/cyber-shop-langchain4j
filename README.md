@@ -1,9 +1,8 @@
 # Informationen zu diesem Projekt
 Dieses Projekt ist eine reine Demoanwendung. Es ist kein voll funktionsfähiges Shop-System, sondern dient nur zu Demonstrationszwecken. Es ist nicht für den produktiven Einsatz gedacht.
 
-# Spring Boot Shop-System
+Es demonstriert den Einsatz von LangChain4j in einer echten Anwendung. Mit LangChain4j wird ein KI-Chatbot implementiert, der Zugriff auf Produktdaten hat und einige Funktionen ausführen kann, wie z.B. Waren in den Warenkorb hinzuzufügen.
 
-Dieses Projekt ist ein einfaches Shop-System, basierend auf Spring Boot mit REST-Unterstützung.
 
 ## Funktionen
 
@@ -11,11 +10,12 @@ Dieses Projekt ist ein einfaches Shop-System, basierend auf Spring Boot mit REST
 - Warenkorb-Verwaltung (Produkte hinzufügen, entfernen, aktualisieren)
 - Bestellungsverwaltung (Bestellung aufgeben, Bestellstatus aktualisieren)
 - REST-API für Frontend-Integration
+- KI Chatbot
 
 ## Technologien
 
 - Spring Boot 3.2.3
-- Java 17
+- Java 21
 - Jackson für JSON-Verarbeitung
 
 ## Datenmodell
@@ -26,7 +26,9 @@ Dieses Projekt ist ein einfaches Shop-System, basierend auf Spring Boot mit REST
 
 ## Ausführen der Anwendung
 
-Sie können die Anwendung mit Maven starten:
+Um den KI-Chatbot zu nutzen, muss eine OpenAI-API-Key als Umgebungsvariable gesetzt werden: OPENAI_API_KEY={api-key}
+
+Anwendung mit Maven starten:
 
 ```bash
 ./mvnw spring-boot:run
